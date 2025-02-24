@@ -1,10 +1,7 @@
 import cv2
 import os
 import numpy as np
-from PIL import Image
-import torch
-from torchvision import models
-import time
+
 
 
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')

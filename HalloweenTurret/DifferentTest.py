@@ -2,8 +2,8 @@ import cv2
 import numpy as np
 
 # Load the Haar cascade files for face detection
-face_cascade_frontal = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-face_cascade_profile = cv2.CascadeClassifier('haarcascade_profileface.xml')
+face_cascade_frontal = cv2.CascadeClassifier('HalloweenTurret/haarcascade_frontalface_default.xml')
+face_cascade_profile = cv2.CascadeClassifier('HalloweenTurret/haarcascade_profileface.xml')
 
 # Initialize video capture on webcam
 cap = cv2.VideoCapture(0)
