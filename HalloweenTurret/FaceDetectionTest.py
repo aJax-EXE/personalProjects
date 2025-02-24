@@ -4,12 +4,12 @@ import numpy as np
 
 
 
-face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+face_cascade = cv2.CascadeClassifier('HalloweenTurret/haarcascade_frontalface_default.xml')
 # Initialize the LBPH recognizer
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 
 # Create a label array that holds all of the labels of the faces in sync with the faces
-# labels = []
+labels = []
 
 def addToDataset(faces, face_img, face_copy) -> None:
     for i, (x,y,w,h) in enumerate(faces):
@@ -19,15 +19,15 @@ def addToDataset(faces, face_img, face_copy) -> None:
         fileName = f"face_{i+1}.jpg"
         outputPath = os.path.join("datasets", fileName)
 
-        # label = f"face_{i+1}"
-        # labels.append(label)
+        label = f"face_{i+1}"
+        labels.append(label)
 
         cv2.imwrite(outputPath, cropped_image)
 
 
 # Just from using loaded images
 def main() -> None:
-    face_img = cv2.imread("testFaces/faces-3598245545.jpeg")
+    face_img = cv2.imread("HalloweenTurret/testFaces/faces-3598245545.jpeg")
     face_copy = face_img.copy()
     # face_img = cv2.resize(face_img,(0, 0), fx=0.5, fy=0.5)
 
