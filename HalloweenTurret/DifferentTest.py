@@ -121,9 +121,9 @@ while True:
         cv2.putText(frame, 'Last_Face', (unique_faces[i-1][0], unique_faces[i-1][1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (36, 255, 12), 2)
 
     # Count total unique faces detected
-    total_faces = len(unique_faces)
-    print(f"Total unique faces detected: {total_faces}")
-    # print(unique_faces)
+    # total_faces = len(unique_faces)
+    # print(f"Total unique faces detected: {total_faces}")
+    # # print(unique_faces)
 
     # Display the frame with detected faces
     cv2.imshow('Face Detection', frame)
