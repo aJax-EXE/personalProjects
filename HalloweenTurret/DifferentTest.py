@@ -105,12 +105,12 @@ while True:
     #         cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
     #         cv2.putText(frame, f'face_{i+1}', (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (36, 255, 12), 2)
 
-    # Draw rectangles around merged faces and add labels
+    # # Draw rectangles around merged faces and add labels
     # for i, (x,y,w,h) in enumerate(unique_faces):
     #     cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
     #     cv2.putText(frame, f'face_{i+1}', (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (36, 255, 12), 2)
 
-    # Drawing a rectangle and label around the last detected merged face
+    # # Drawing a rectangle and label around the last detected merged face
     # for (x,y,w,h) in lastFace:
     #     cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
     #     cv2.putText(frame, 'Last_Face', (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (36, 255, 12), 2)
