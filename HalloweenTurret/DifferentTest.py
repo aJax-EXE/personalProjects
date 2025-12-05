@@ -92,38 +92,38 @@ while True:
     faceNum = len(unique_faces)
 
     # Getting the last detected merged face
-    # if len(unique_faces) > 0:
-    #     lastFace = unique_faces[len(unique_faces)-1]
-    #     print(lastFace)
-    #     # Drawing a rectangle and label around the last detected merged face
-    #     for (x, y, w, h) in lastFace:
-    #         cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
-    #         cv2.putText(frame, 'Last_Face', (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (36, 255, 12), 2)
-    # else:
-    #     # Draw rectangles around merged faces and add labels
-    #     for i, (x,y,w,h) in enumerate(unique_faces):
-    #         cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
-    #         cv2.putText(frame, f'face_{i+1}', (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (36, 255, 12), 2)
+    if len(unique_faces) > 0:
+        lastFace = unique_faces[len(unique_faces)-1]
+        print(lastFace)
+        # Drawing a rectangle and label around the last detected merged face
+        for (x, y, w, h) in lastFace:
+            cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
+            cv2.putText(frame, 'Last_Face', (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (36, 255, 12), 2)
+    else:
+        # Draw rectangles around merged faces and add labels
+        for i, (x,y,w,h) in enumerate(unique_faces):
+            cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
+            cv2.putText(frame, f'face_{i+1}', (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (36, 255, 12), 2)
 
-    # # Draw rectangles around merged faces and add labels
-    # for i, (x,y,w,h) in enumerate(unique_faces):
-    #     cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
-    #     cv2.putText(frame, f'face_{i+1}', (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (36, 255, 12), 2)
+    # Draw rectangles around merged faces and add labels
+    for i, (x,y,w,h) in enumerate(unique_faces):
+        cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
+        cv2.putText(frame, f'face_{i+1}', (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (36, 255, 12), 2)
 
-    # # Drawing a rectangle and label around the last detected merged face
-    # for (x,y,w,h) in lastFace:
-    #     cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
-    #     cv2.putText(frame, 'Last_Face', (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (36, 255, 12), 2)
+    # Drawing a rectangle and label around the last detected merged face
+    for (x,y,w,h) in lastFace:
+        cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
+        cv2.putText(frame, 'Last_Face', (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (36, 255, 12), 2)
 
-    #seemingly works; never tested though...
-    for i, (x, y, w, h) in enumerate(unique_faces):
-        cv2.rectangle(frame, (unique_faces[i-1][0], unique_faces[i-1][1]), (unique_faces[i-1][0] + unique_faces[i-1][2], unique_faces[i-1][1] + unique_faces[i-1][3]), (255, 0, 0), 2)
-        cv2.putText(frame, 'Last_Face', (unique_faces[i-1][0], unique_faces[i-1][1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (36, 255, 12), 2)
+    #seemingly works; never tested though...; don't think it works
+    # for i, (x, y, w, h) in enumerate(unique_faces):
+    #     cv2.rectangle(frame, (unique_faces[i-1][0], unique_faces[i-1][1]), (unique_faces[i-1][0] + unique_faces[i-1][2], unique_faces[i-1][1] + unique_faces[i-1][3]), (255, 0, 0), 2)
+    #     cv2.putText(frame, 'Last_Face', (unique_faces[i-1][0], unique_faces[i-1][1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (36, 255, 12), 2)
 
     # Count total unique faces detected
-    # total_faces = len(unique_faces)
-    # print(f"Total unique faces detected: {total_faces}")
-    # # print(unique_faces)
+    total_faces = len(unique_faces)
+    print(f"Total unique faces detected: {total_faces}")
+    # print(unique_faces)
 
     # Display the frame with detected faces
     cv2.imshow('Face Detection', frame)
