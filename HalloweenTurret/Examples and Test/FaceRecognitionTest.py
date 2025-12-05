@@ -4,7 +4,7 @@ import numpy as np
 
 
 
-face_cascade = cv2.CascadeClassifier('HalloweenTurret/Haar Cascade Datasets/haarcascade_frontalface_default.xml')
+face_cascade = cv2.CascadeClassifier('HalloweenTurret/Haar Cascade Classifiers/haarcascade_frontalface_default.xml')
 # Initialize the LBPH recognizer
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 
