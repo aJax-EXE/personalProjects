@@ -3,7 +3,7 @@ import numpy as np
 import serial
 import time
 
-face_cascade = cv2.CascadeClassifier('HalloweenTurret/haarcascade_frontalface_default.xml')
+face_cascade = cv2.CascadeClassifier('HalloweenTurret/Haar Cascade Datasets/haarcascade_frontalface_default.xml')
 
 arduinoData = serial.Serial('/dev/ttyACM0', 9600, timeout=0.01, write_timeout=0.01)
 

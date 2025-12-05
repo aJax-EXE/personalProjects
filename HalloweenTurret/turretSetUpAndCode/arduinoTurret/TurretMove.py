@@ -12,7 +12,7 @@ def send_coordinates_to_arduino(x, y, w, h):
     print(f"X{x}Y{y}\n")
 
 capture = cv2.VideoCapture(0) #Change the number for the camera that you are using, 0 is for the internal laptop camera, 1 is for an external webcam
-face_cascade = cv2.CascadeClassifier('HalloweenTurret/haarcascade_frontalface_default.xml')
+face_cascade = cv2.CascadeClassifier('HalloweenTurret/Haar Cascade Datasets/haarcascade_frontalface_default.xml')
 
 while True:
     isTrue, frame = capture.read()
