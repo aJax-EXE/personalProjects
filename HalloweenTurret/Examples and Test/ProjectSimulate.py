@@ -11,17 +11,20 @@ while True:
 
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray, 1.05, 8, minSize=(120,120))
-    forehead = int(h/3)
+    # forehead = int(h/3)
     for (x, y, w, h) in faces:
         forehead = int(h/3)
-        cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 5)
+        cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 0, 0), 5)
 
         # Forehead Box and Label
         cv2.rectangle(frame, (x,y), (x+w, y+forehead), (255,0,0), 2)
         cv2.putText(frame, "Forehead", (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255,0,0), 2)
 
         # Laser Simulation
-        # cv2.circle(frame, )
+        x_center = x+w // 2
+        y_center = y+forehead // 4
+
+        cv2.circle(frame, (x_center, y_center), 5, (0, 255, 0), -1)
 
     cv2.imshow('Video', frame)
 
