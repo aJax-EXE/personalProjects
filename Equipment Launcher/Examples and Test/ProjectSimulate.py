@@ -11,8 +11,14 @@ while True:
 
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray, 1.05, 8, minSize=(120,120))
-    for (x, y, w, h) in faces:
+    if len(faces) > 0:
+        # Get the coordinates of the last detected face
+        (x, y, w, h) = faces[-1]
+
+        # Find the rough position of the forehead
         forehead = h//3
+
+        # Box the entire head
         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 0, 0), 5)
 
         # Forehead Box and Label
