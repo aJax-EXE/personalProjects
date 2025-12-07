@@ -56,11 +56,18 @@ def main():
             # Get the coordinates of the last detected face
             (x, y, w, h) = faces[-1]
 
+            # Find the rough height of the forehead
+            forehead = h//3
+
             # Drawing the rectangle and labeling the face
             cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
             cv2.putText(frame, "Target Face", (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (36, 255, 12), 2)
+
+            # Getting the coordinates for the Center(ish) of the Forehead
+            x_center = x+w // 2
+            y_center = y+forehead // 4
             
-            send_coordinates_to_arduino(x, y)
+            send_coordinates_to_arduino(x_center, y_center)
         
         cv2.imshow('Face Detection', frame)
         
