@@ -7,13 +7,31 @@ import time
 face_cascade = cv2.CascadeClassifier('HalloweenTurret/Haar Cascade Classifiers/haarcascade_frontalface_default.xml')
 
 # Setting up the serial communication to the Arduino
-arduinoData = serial.Serial('/dev/ttyACM0', 9600, write_timeout=1)
+arduinoData = serial.Serial('/dev/ttyACM0', 9600, timeout=0.01, write_timeout=0.01)
 
-def send_coordinates_to_arduino(x, y, w, h):
+LAST_SEND = 0
+SEND_INTERVAL = 0.10   # only 10 msgs/sec
+
+def send_coordinates_to_arduino(x, y):
     # Convert the coordinates to a string and send it to Arduino
+    global LAST_SEND
+    now = time.time()
+
+    if now - LAST_SEND < SEND_INTERVAL:
+        return
+
     coordinates = f"{x},{y}\r"
-    arduinoData.write(coordinates.encode())
-    print(f"X{x}Y{y}\n")
+
+    try:
+        arduinoData.write(coordinates.encode())
+    except serial.SerialTimeoutException:
+        print("Serial timeout - Arduino overloaded")
+    except Exception as e:
+        print("Serial error:", e)
+
+    LAST_SEND = now
+
+
 
 def main():
     # Setting up the webcam camera feed; 0 is webcam, 1 is an external camera
@@ -33,14 +51,16 @@ def main():
         
         faces = face_cascade.detectMultiScale(grey, 1.05, 8, minSize=(120,120))
        
-        # Drawing the Rectangle and labeling the faces the different faces
-        for i, (x,y,w,h) in enumerate(faces):
+        # Drawing the Rectangle around the last face 
+        if len(faces) > 0:
+            # Get the coordinates of the last detected face
+            (x, y, w, h) = faces[-1]
+
+            # Drawing the rectangle and labeling the face
             cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
-            cv2.putText(frame, f"face_{i+1}", (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (36, 255, 12), 2)
-            # print(f"highest number: {i+1}; x: {x}, y: {y}, w: {w}, and h: {h}")
-            # largest_i = len(faces) - 1
-            (lastX, lastY, lastW, lastH) = faces[-1]
-            send_coordinates_to_arduino(lastX, lastY, lastW, lastH)
+            cv2.putText(frame, "Target Face", (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (36, 255, 12), 2)
+            
+            send_coordinates_to_arduino(x, y)
         
         cv2.imshow('Face Detection', frame)
         

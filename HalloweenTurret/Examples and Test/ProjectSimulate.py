@@ -11,9 +11,8 @@ while True:
 
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray, 1.05, 8, minSize=(120,120))
-    # forehead = int(h/3)
     for (x, y, w, h) in faces:
-        forehead = int(h/3)
+        forehead = h//3
         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 0, 0), 5)
 
         # Forehead Box and Label
