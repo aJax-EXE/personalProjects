@@ -4,3 +4,5 @@
 # Ignore .gif
 *.gif
 
+# Ignore folder
+Equipment Launcher/turretSetUpAndCode
