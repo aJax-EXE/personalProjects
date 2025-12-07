@@ -4,7 +4,7 @@ import numpy as np
 import cv2
 
 capture = cv2.VideoCapture(0) #Change the number for the camera that you are using, 0 is for the internal laptop camera, 1 is for an external webcam
-face_cascade = cv2.CascadeClassifier('HalloweenTurret/Haar Cascade Classifiers/haarcascade_frontalface_default.xml')
+face_cascade = cv2.CascadeClassifier('Equipment Launcher/Haar Cascade Classifiers/haarcascade_frontalface_default.xml')
 
 while True:
     isTrue, frame = capture.read()

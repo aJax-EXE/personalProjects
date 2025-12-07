@@ -4,7 +4,7 @@ import serial
 import time
 
 # Load the Haar cascade file for face detection
-face_cascade = cv2.CascadeClassifier('HalloweenTurret/Haar Cascade Classifiers/haarcascade_frontalface_default.xml')
+face_cascade = cv2.CascadeClassifier('Equipment Launcher/Haar Cascade Classifiers/haarcascade_frontalface_default.xml')
 
 # Setting up the serial communication to the Arduino
 arduinoData = serial.Serial('/dev/ttyACM0', 9600, timeout=0.01, write_timeout=0.01)
